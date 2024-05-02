@@ -11,12 +11,14 @@ class UserRouter {
   }
 
   static get(req, res) {
+    console.log('Passou aqui');
+    console.log(req.params);
     try {
-      UserController.getAll().then((data) => {
-          res.status(200).json(
-            data,
-          );
-        })
+      UserController.get(req.params.id).then((data) => {
+        res.status(200).json(
+          data,
+        );
+      })
         .catch((err) => {
           if (err instanceof GeneralError) {
             console.log(`error: - ${err.getMessageLog()}`);
@@ -35,10 +37,10 @@ class UserRouter {
   static getAll(req, res) {
     try {
       UserController.getAll().then((data) => {
-          res.status(200).json(
-            data,
-          );
-        })
+        res.status(200).json(
+          data,
+        );
+      })
         .catch((err) => {
           if (err instanceof GeneralError) {
             console.log(`error: - ${err.getMessageLog()}`);

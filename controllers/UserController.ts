@@ -1,7 +1,8 @@
 import UserModel from '../models/UserModel';
 
 class UserController {
-    static get(id: string) {
+    static async get(id: string) {
+        console.log(id);
         const users: Array<UserModel.User> = new Array();
         users.push(({
             id: id,
@@ -19,7 +20,7 @@ class UserController {
         } as UserModel.User));
         users.push(({
             id: '2',
-            name: 'João da Silva'
+            name: 'Eduardo Andrade'
         } as UserModel.User));
         return users;
     }
